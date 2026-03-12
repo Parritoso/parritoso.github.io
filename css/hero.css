@@ -1,0 +1,172 @@
+/* Hero y Canvas */
+#hero {
+    background: radial-gradient(circle at center, rgba(13, 110, 253, 0.05) 0%, transparent 70%);
+}
+
+#particleCanvas {
+    z-index: 0;
+    pointer-events: none; /* Permite interactuar con botones encima */
+}
+
+/* Animación del Scroll Hint */
+.mouse-icon {
+    width: 26px;
+    height: 42px;
+    border: 2px solid currentColor;
+    border-radius: 15px;
+    position: relative;
+    opacity: 0.6;
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background-color: var(--bs-primary);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll-wheel 1.5s infinite;
+}
+
+@keyframes scroll-wheel {
+    0% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, 20px); }
+}
+
+/* Cursor del typing effect */
+#typing-text {
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { border-color: transparent !important; }
+}
+
+/* Contenedor principal para la perspectiva 3D */
+.hero-image-container {
+    width: 200px;
+    height: 200px;
+    perspective: 1000px; /* Crucial para el efecto 3D */
+    cursor: pointer;
+    position: relative;
+}
+
+/* El elemento que realmente gira */
+.hero-image-flipper {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d; /* Mantiene las caras en 3D */
+    position: relative;
+}
+
+/* Clase que activa el volteo (añadida por JS) */
+.hero-image-flipper.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* Definición de las caras */
+.front-face, .back-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden; /* Oculta la cara trasera al girar */
+    -webkit-backface-visibility: hidden; /* Safari */
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* La cara trasera ya empieza girada */
+.back-face {
+    transform: rotateY(180deg);
+}
+
+/* Imagen dentro de las caras */
+.hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Pequeña animación para el indicador visual */
+.flip-hint {
+    animation: pulse-hint 2s infinite;
+}
+
+@keyframes pulse-hint {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Transición suave para el cambio de texto */
+.transition-text {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: inline-block;
+}
+
+.transition-text.text-hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.main-cta, .cv-cta {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Efecto hover para el botón de CV */
+.cv-cta:hover {
+    transform: translateY(-5px); /* Elevación */
+    background-color: rgba(var(--bs-primary-rgb), 0.1); /* Fondo sutil */
+    box-shadow: 0 10px 20px rgba(var(--bs-primary-rgb), 0.2);
+}
+
+/* Animación del icono de descarga al hacer hover */
+.cv-cta:hover .download-icon {
+    animation: bounce-download 0.8s infinite;
+}
+
+@keyframes bounce-download {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(3px); }
+}
+
+/* Ajuste de jerarquía visual */
+.main-cta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(var(--bs-primary-rgb), 0.4);
+}
+
+/* Estado por defecto (Light o sin definir) */
+#c { 
+    display: none; 
+}
+#particleCanvas { 
+    display: block; 
+    background: radial-gradient(circle, rgba(13, 110, 253, 0.05) 0%, transparent 70%);
+}
+
+/* Estado cuando el Dark Mode está activo */
+[data-bs-theme=dark] #c { 
+    display: block; 
+}
+[data-bs-theme=dark] #particleCanvas { 
+    display: none; 
+}
+
+/* Asegurar que el overlay del Hero sea dinámico */
+.matrix-overlay {
+    z-index: 2;
+    pointer-events: none;
+    transition: background 0.5s ease;
+}
+
+[data-bs-theme=dark] .matrix-overlay {
+    background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+}

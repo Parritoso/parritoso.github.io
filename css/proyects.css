@@ -1,0 +1,79 @@
+/* Efecto Hover en Cards (Componente Bootstrap 6) */
+.project-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+    cursor: default;
+}
+
+.project-card:hover {
+    transform: scale(1.05); /* Efecto solicitado */
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+/* Animación de opacidad para el filtrado */
+.project-item {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.project-item.hide {
+    display: none;
+    opacity: 0;
+}
+
+/* Badge personalizado en la imagen */
+.card-badge .badge {
+    backdrop-filter: blur(5px);
+    font-weight: 500;
+}
+
+/* Contenedor visual superior de la Card */
+.project-card-visual {
+    height: 220px; /* Altura fija para que todas las cards midan igual */
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bs-body-tertiary); /* Fondo base */
+}
+
+/* Ajuste para cuando SÍ hay imagen real */
+.project-card-visual .card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crucial para que la imagen no se estire */
+    transition: transform 0.6s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+/* Estilos del Placeholder Degradado (Cuando NO hay imagen) */
+.project-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Degradado moderno usando los colores de tu marca (Primary -> Info) */
+    background: linear-gradient(135deg, rgba(var(--bs-primary-rgb), 0.8) 0%, rgba(var(--bs-info-rgb), 0.4) 100%);
+    transition: transform 0.6s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+/* Ajuste del degradado para Dark Mode */
+[data-bs-theme="dark"] .project-image-placeholder {
+    background: linear-gradient(135deg, rgba(var(--bs-primary-rgb), 0.4) 0%, rgba(0,0,0,0.6) 100%);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* El icono grande centrado */
+.project-image-placeholder i {
+    opacity: 0.3; /* Sutil, que no distraiga del texto */
+    color: white;
+    font-size: 5rem; /* ¡Grande! */
+    transition: all 0.4s ease;
+}
+
+/* Mantener la microinteracción de escala (1.05) */
+.project-card:hover .card-img-top,
+.project-card:hover .project-image-placeholder {
+    transform: scale(1.05);
+}
+
+.project-card:hover .project-image-placeholder i {
+    opacity: 0.6; /* El icono gana presencia al hacer hover */
+    transform: scale(1.1);
+}

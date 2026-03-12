@@ -1,0 +1,51 @@
+/* Navbar con efecto Glassmorphism */
+.custom-navbar {
+    background-color: rgba(var(--bs-body-bg-rgb), 0.7) !important;
+    backdrop-filter: blur(12px); /* El truco del blur */
+    -webkit-backdrop-filter: blur(12px); /* Compatibilidad con Safari */
+}
+
+/* Estilo base de los links */
+.nav-link {
+    position: relative;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    color: var(--bs-nav-link-color);
+}
+
+/* El Subrayado (Pseudo-elemento) */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 5px;
+    left: 50%;
+    background-color: var(--bs-primary);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+/* Microinteracción al pasar el ratón (Hover) */
+.nav-link:hover::after {
+    width: 70%;
+}
+
+.nav-link:hover {
+    color: var(--bs-primary) !important;
+}
+
+/* Estado ACTIVO (Controlado por ScrollSpy) */
+.nav-link.active {
+    color: var(--bs-primary) !important;
+}
+
+.nav-link.active::after {
+    width: 80%; /* Se queda expandido si estamos en esa sección */
+    height: 3px;
+}
+
+/* Ajuste para que el scroll no tape el título de la sección */
+section {
+    scroll-margin-top: 70px; /* Altura aproximada de tu navbar */
+}

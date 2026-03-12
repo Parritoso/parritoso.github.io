@@ -1,0 +1,66 @@
+/* Feedback visual en tiempo real */
+.form-control.is-valid {
+    border-color: #198754 !important;
+    background-image: url("data:image/svg+xml,...");
+    /* Icono check de Bootstrap */
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+/* Microinteracción en el Footer */
+.transition-hover:hover {
+    color: var(--bs-primary) !important;
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+}
+
+/* Efecto de foco mejorado para WCAG 2.2 */
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-color: var(--bs-primary);
+}
+
+/* Contenedor de la Ninfa */
+#cockatiel-pet {
+    position: fixed;
+    bottom: 20px;
+    left: 100%;
+    /* Empieza fuera por la derecha */
+    width: 65px;
+    z-index: 9999;
+    pointer-events: none;
+    transition: transform 0.2s ease;
+}
+
+/* Girar a la IZQUIERDA (porque el GIF original mira a la derecha) */
+.look-left {
+    transform: scaleX(-1);
+}
+
+/* Panel de Debug */
+#cockatiel-debug {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 10000;
+    border: 1px solid #0f0;
+    display: none;
+    /* Se activa por JS */
+}
+
+@media (max-width: 767px) {
+
+    #cockatiel-pet,
+    #cockatiel-debug {
+        display: none !important;
+        visibility: hidden;
+    }
+}
