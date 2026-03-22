@@ -170,3 +170,9 @@
 [data-bs-theme=dark] .matrix-overlay {
     background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
 }
+
+@media (max-width: 768px) {
+    .translate-middle-x {
+        transform: none !important;
+    }
+}
