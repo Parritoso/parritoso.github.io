@@ -8,7 +8,7 @@ const mouse = { x: null, y: null };
 const matrixChars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲンQWERTYUIOPASDFGHJKLZXCVBNM0123456789".split("");
 const fontSize = 16;
 let drops = [];
-let matrixColor = "#0F0"; // Variable para el cambio que haremos después
+let matrixColor = "#0F0"; // Variable para el cambio de color
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -18,10 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. LÓGICA DE DETECCIÓN DE TEMA ---
     const getPreferredTheme = () => {
-        // Si el usuario ya eligió algo antes, lo usamos
         const stored = localStorage.getItem('theme');
         if (stored) return stored;
-        // Si no, usamos la preferencia del sistema
+        //usamos la preferencia del sistema
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     };
 
@@ -50,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nameText = document.getElementById('hero-name-dynamic');
     const clickArea = document.getElementById('heroImageClickArea');
 
-    // 2. CONTEXTOS (Aquí estaba el fallo: ahora son independientes)
+    // 2. CONTEXTOS
     const pCtx = particleCanvas.getContext('2d');
     const mCtx = matrixCanvas.getContext('2d');
 

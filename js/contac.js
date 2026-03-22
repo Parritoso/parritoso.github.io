@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Simulación de envío de API (2 segundos)
             setTimeout(() => {
                 btnSpinner.classList.add('d-none');
-                btnText.textContent = '¡Enviado!';
+                btnText.textContent = '¡Enviado!\nRecuerde que es un proyecto educativo y no se enviara ningun correo';
                 submitBtn.classList.replace('btn-primary', 'btn-success');
                 successAlert.classList.remove('d-none');
                 
